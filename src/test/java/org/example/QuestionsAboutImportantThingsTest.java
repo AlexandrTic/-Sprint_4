@@ -6,11 +6,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+
 import static main.QuestionsAboutImportantThings.*;
 import static org.junit.Assert.assertEquals;
 
@@ -38,30 +36,26 @@ public class QuestionsAboutImportantThingsTest {
 
     public static Object[][] testData(){
         return new Object[][]{
-                {whatIsThePriceTextExpected, clickWhatIsThePriceTextActual, WhatIsThePriceTextActual},
-                {severalScootersTextExpected, clickSeveralScootersTextActual, SeveralScootersTextActual},
-                {rentalTimeCalculationTextExpected, clickRentalTimeCalculationTextActual, RentalTimeCalculationTextActual},
-                {orderTodayTextExpected, clickOrderTodayTextActual, OrderTodayTextActual},
-                {extendOrReturnEarlierTextExpected, clickExtendOrReturnEarlierTextActual, ExtendOrReturnEarlierTextActual},
-                {chargingWithScooterTextExpected, clickChargingWithScooterTextActual, ChargingWithScooterTextActual},
-                {cancelTheOrderTextExpected, clickCancelTheOrderTextActual, CancelTheOrderTextActual},
-                {outsideTheMoscowRingRoadTextExpected, clickOutsideTheMoscowRingRoadTextActual, OutsideTheMoscowRingRoadTextActual},
+                {What_Is_The_Price_Text_Expected, Click_What_Is_The_Price_Text_Actual, What_Is_The_Price_Text_Actual},
+                {Several_Scooters_Text_Expected, Click_Several_Scooters_Text_Actual, Several_Scooters_Text_Actual},
+                {Rental_Time_Calculation_Text_Expected, Click_Rental_Time_Calculation_Text_Actual, Rental_Time_Calculation_Text_Actual},
+                {Order_Today_Text_Expected, Click_Order_Today_Text_Actual, Order_Today_Text_Actual},
+                {Extend_Or_Return_Earlier_Text_Expected, Click_Extend_Or_Return_Earlier_Text_Actual, Extend_Or_Return_Earlier_Text_Actual},
+                {Charging_With_Scooter_Text_Expected, Click_Charging_With_Scooter_Text_Actual, Charging_With_Scooter_Text_Actual},
+                {Cancel_The_Order_Text_Expected, Click_Cancel_The_Order_Text_Actual, Cancel_The_Order_Text_Actual},
+                {Outside_The_Moscow_Ring_Road_Text_Expected, Click_Outside_The_Moscow_Ring_Road_Text_Actual, Outside_The_Moscow_Ring_Road_Text_Actual},
         };
     }
 
     @Before
     public void startChrome(){
         driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get("https://qa-scooter.praktikum-services.ru/");
-        WebElement everyoneIsUsedToTheButton = driver.findElement(By.className("App_CookieButton__3cvqF"));
-        everyoneIsUsedToTheButton.click();
-        WebElement listQuation = driver.findElement(By.className("accordion"));
-        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", listQuation);
+        QuestionsAboutImportantThings questionsAboutImportantThings = new QuestionsAboutImportantThings(driver);
+        questionsAboutImportantThings.startTest();
     }
 
     @Test
-    public void QuestionsAboutImportantThingsNotExistTest () {
+    public void questionsAboutImportantThingsNotExistTest () {
 
         QuestionsAboutImportantThings questionsAboutImportantThings = new QuestionsAboutImportantThings(driver);
         questionsAboutImportantThings.clickElementToAnswerTheQuestion(elementForClick);
@@ -72,8 +66,8 @@ public class QuestionsAboutImportantThingsTest {
     @After
 
     public void tearDown(){
-
-        driver.quit();
+        QuestionsAboutImportantThings questionsAboutImportantThings = new QuestionsAboutImportantThings(driver);
+        questionsAboutImportantThings.quitBrows();
 
     }
 }
