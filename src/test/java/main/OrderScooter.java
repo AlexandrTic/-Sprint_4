@@ -16,7 +16,7 @@ public class OrderScooter {
     public static final By Click_Everyone_Is_Used_To_The_Button = By.className("App_CookieButton__3cvqF");//кнопка ок с куками
     public static final String Url_Site_Order_Scooter = "https://qa-scooter.praktikum-services.ru/";//адрес сайта по заказу самокатов
     public static final By Sign_Top_Button_Order = By.className("Button_Button__ra12g");//верхняя кнопка Заказать
-    public static final By Sign_Bottom_Button = By.xpath(".//button[contains(@class, 'Button_Button__ra12g Button_UltraBig__UU3Lp')]");//нижняя кнопка заказать
+    public static final By Sign_Bottom_Button = By.xpath(".//button[contains(@class, 'Button_Button__ra12g Button_Middle__1CSJM')]");//нижняя кнопка заказать
     private static final By nameField = By.xpath(".//input[contains(@placeholder, 'Имя')]");//поле *Имя
     private static final By surnameField = By.xpath(".//input[contains(@placeholder,'* Фамилия')]");//поле *Фамилия
     private static final By addressField = By.xpath(".//input[contains(@placeholder, '* Адрес: куда привезти заказ')]");//поле *Адрес: куда привезти
