@@ -36,14 +36,14 @@ public class QuestionsAboutImportantThingsTest {
 
     public static Object[][] testData(){
         return new Object[][]{
-                {What_Is_The_Price_Text_Expected, Click_What_Is_The_Price_Text_Actual, What_Is_The_Price_Text_Actual},
-                {Several_Scooters_Text_Expected, Click_Several_Scooters_Text_Actual, Several_Scooters_Text_Actual},
-                {Rental_Time_Calculation_Text_Expected, Click_Rental_Time_Calculation_Text_Actual, Rental_Time_Calculation_Text_Actual},
-                {Order_Today_Text_Expected, Click_Order_Today_Text_Actual, Order_Today_Text_Actual},
-                {Extend_Or_Return_Earlier_Text_Expected, Click_Extend_Or_Return_Earlier_Text_Actual, Extend_Or_Return_Earlier_Text_Actual},
-                {Charging_With_Scooter_Text_Expected, Click_Charging_With_Scooter_Text_Actual, Charging_With_Scooter_Text_Actual},
-                {Cancel_The_Order_Text_Expected, Click_Cancel_The_Order_Text_Actual, Cancel_The_Order_Text_Actual},
-                {Outside_The_Moscow_Ring_Road_Text_Expected, Click_Outside_The_Moscow_Ring_Road_Text_Actual, Outside_The_Moscow_Ring_Road_Text_Actual},
+                {WHAT_IS_THE_PRICE_TEXT_EXPECTED, CLICK_WHAT_IS_THE_PRICE_TEXT_ACTUAL, WHAT_IS_THE_PRICE_TEXT_ACTUAL},
+                {SEVERAL_SCOOTERS_TEXT_EXPECTED, CLICK_SEVERAL_SCOOTERS_TEXT_ACTUAL, SEVERAL_SCOOTERS_TEXT_ACTUAL},
+                {RENTAL_TIME_CALCULATION_TEXT_EXPECTED, CLICK_RENTAL_TIME_CALCULATION_TEXT_ACTUAL, RENTAL_TIME_CALCULATION_TEXT_ACTUAL},
+                {ORDER_TODAY_TEXT_EXPECTED, CLICK_ORDER_TODAY_TEXT_ACTUAL, ORDER_TODAY_TEXT_ACTUAL},
+                {EXTEND_OR_RETURN_EARLIER_TEXT_EXPECTED, CLICK_EXTEND_OR_RETURN_EARLIER_TEXT_ACTUAL, EXTEND_OR_RETURN_EARLIER_TEXT_ACTUAL},
+                {CHARGING_WITH_SCOOTER_TEXT_EXPECTED, CLICK_CHARGING_WITH_SCOOTER_TEXT_ACTUAL, CHARGING_WITH_SCOOTER_TEXT_ACTUAL},
+                {CANCEL_THE_ORDER_TEXT_EXPECTED, CLICK_CANCEL_THE_ORDER_TEXT_ACTUAL, CANCEL_THE_ORDER_TEXT_ACTUAL},
+                {OUTSIDE_THE_MOSCOW_RING_ROAD_TEXT_EXPECTED, CLICK_OUTSIDE_THE_MOSCOW_RING_ROAD_TEXT_ACTUAL, OUTSIDE_THE_MOSCOW_RING_ROAD_TEXT_ACTUAL},
         };
     }
 
