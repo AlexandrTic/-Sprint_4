@@ -8,8 +8,10 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
 import static main.OrderScooter.*;
 import static org.junit.Assert.assertEquals;
+
 
 @RunWith(Parameterized.class)
 
@@ -37,7 +39,7 @@ public class OrderScooterTest {
 
     public OrderScooterTest(String clickTopButtonOrder, String userName, String userSurname, String userAddress, String userMetro, String userPhone, String clickFurtherButtonOrder,
                             String userDate, String clickOnDateOrder, String clickRentalPeriodOrder, String clickChoosePeriodOrder,
-                            String clickChooseColorOrder, String userComment, String clickBottomButton, String clickButtonYesCheckoutOrder, String orderDataEntryFormActual, String expectedText){
+                            String clickChooseColorOrder, String userComment, String clickBottomButton, String clickButtonYesCheckoutOrder, String orderDataEntryFormActual, String expectedText) {
 
         this.clickTopButtonOrder = clickTopButtonOrder;
         this.userName = userName;
@@ -58,8 +60,9 @@ public class OrderScooterTest {
         this.expectedText = expectedText;
     }
 
+
     @Parameterized.Parameters
-    public static Object[][] testData(){
+    public static Object[][] testData() {
         return new Object[][]{
                 {SIGN_TOP_BUTTON_ORDER, "Иван", "Иванов", "Москва", "Тверская", "89111111111", SIGN_FURTHER_BUTTON, "20.11.2023",
                         SIGN_ON_DATE, SIGN_RENTAL_PERIOD, SIGN_CHOOSE_PERIOD, SIGN_CHOOSE_COLOR, "Отзовниться за час",
@@ -67,9 +70,7 @@ public class OrderScooterTest {
                 {SIGN_TOP_BUTTON_ORDER, "Пётр", "Петров", "Москва, Красная площадь", "Технопарк", "89222222222", SIGN_FURTHER_BUTTON, "21.11.2023",
                         SIGN_ON_DATE, SIGN_RENTAL_PERIOD, SIGN_CHOOSE_PERIOD, SIGN_CHOOSE_COLOR, "Отзовниться за три часа до доставки",
                         SIGN_BOTTOM_BUTTON_ORDER, SIGN_BUTTON_YES_CHECKOUT, ORDER_IS_PROCESSED_ACTUAL, ORDER_IS_PROCESSED_EXPECTED},
-                {SIGN_BOTTOM_BUTTON, "Курт", "Кобейн", "Санкт-Петербург", "Маяковская", "89322222222", SIGN_FURTHER_BUTTON, "22.11.2023",
-                        SIGN_ON_DATE, SIGN_RENTAL_PERIOD, SIGN_CHOOSE_PERIOD, SIGN_CHOOSE_COLOR, "Пароль: Smells Like Teen Spirit",
-                        SIGN_BOTTOM_BUTTON_ORDER, SIGN_BUTTON_YES_CHECKOUT, ORDER_IS_PROCESSED_ACTUAL, ORDER_IS_PROCESSED_EXPECTED},
+
         };
     }
 
@@ -81,7 +82,7 @@ public class OrderScooterTest {
     }
 
     @Test
-    public void firstPositiveScenarioForOrderingScooterTopButton () {
+    public void firstPositiveScenarioForOrderingScooterTopButton() {
         OrderScooter orderScooter = new OrderScooter(driver);
         orderScooter.clickTopButton(clickTopButtonOrder);
         orderScooter.setName(userName);

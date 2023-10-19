@@ -30,6 +30,8 @@ public class OrderScooter {
     public final static String SIGN_BUTTON_YES_CHECKOUT = ".//button[contains(text(), 'Да')]";//кнопка Да
     public final static String ORDER_IS_PROCESSED_EXPECTED = "Посмотреть статус";//ожидаемый результат по ВЕРХНЕЙ кнопке заказать
     public final static String ORDER_IS_PROCESSED_ACTUAL = ".//button[@class='Button_Button__ra12g Button_Middle__1CSJM' and text()='Посмотреть статус']";//фактический результат по ВЕРХНЕЙ КНОПКЕ
+    public final static String ORDER_DATA_ENTRY_FORM_EXPECTED = "Для кого самокат";//ожидаемый результат по НИЖНЕЙ кнопке заказать
+    public final static String ORDER_DATA_ENTRY_FORM_ACTUAL = "Order_Header__BZXOb";
 
     public OrderScooter(WebDriver driver) {
         this.driver = driver;
@@ -130,6 +132,11 @@ public class OrderScooter {
         String ActualResultOrderBottomButton = driver.findElement(By.xpath(orderDataEntryFormActual)).getText();
         return ActualResultOrderBottomButton;
     }
+    public static String orderDataEntryFormBottomButton(String orderDataEntryFormActualBottomButton){
+        String ActualResultOrderBottomButton = driver.findElement(By.className(orderDataEntryFormActualBottomButton)).getText();
+        return ActualResultOrderBottomButton;
+    }
+
 
     public void startTest(){
         driver.manage().window().maximize();
