@@ -6,124 +6,146 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
-
 public class OrderScooter {
 
-    private WebDriver driver;
+    private static WebDriver driver;
 
-    public static final By Click_Everyone_Is_Used_To_The_Button = By.className("App_CookieButton__3cvqF");//кнопка ок с куками
-    public static final String Url_Site_Order_Scooter = "https://qa-scooter.praktikum-services.ru/";//адрес сайта по заказу самокатов
-    public static final By Sign_Top_Button_Order = By.className("Button_Button__ra12g");//верхняя кнопка Заказать
-    public static final By Sign_Bottom_Button = By.xpath(".//button[contains(@class, 'Button_Button__ra12g Button_Middle__1CSJM')]");//нижняя кнопка заказать
-    private static final By nameField = By.xpath(".//input[contains(@placeholder, 'Имя')]");//поле *Имя
-    private static final By surnameField = By.xpath(".//input[contains(@placeholder,'* Фамилия')]");//поле *Фамилия
-    private static final By addressField = By.xpath(".//input[contains(@placeholder, '* Адрес: куда привезти заказ')]");//поле *Адрес: куда привезти
-    private static final By metroField = By.className("select-search__input");//поле *Станция метро
-    private static final By phoneField = By.xpath(".//input[contains(@placeholder, '* Телефон: на него позвонит курьер')]");//поле *Телефон: на него позвонит курьер
-    private static final By signFurtherButton = By.xpath(".//button[contains(@class, 'Button_Button__ra12g Button_Middle__1CSJM')]");//кнопка далее
-    private static final By dateField = By.xpath(".//input[contains(@placeholder, '* Когда привезти самокат')]");//поле *Когда привезти самокат
-    private final static By signOnDate = By.xpath(".//div[contains(@aria-label, 'Choose понедельник, 20-е ноября 2023 г.')]");// выбор даты
-    private final static By signRentalPeriod = By.className("Dropdown-placeholder");// поле *Срок аренды
-    private final static By signChoosePeriod = By.xpath(".//div[contains(text(), 'трое суток')]");//выбор срока аренды
-    private final static By signChooseColor = By.xpath(".//label[contains(text(), 'чёрный жемчуг')]");// поле *Цвет самоката
-    private final static By commentField = By.xpath(".//input[contains(@placeholder, 'Комментарий для курьера')]");// поле Комментарий для курьера
-    private final static By signBottomButtonOrder = By.xpath(".//div[3]/button[2]");//кнопка заказать (после ввода всех обязательных данных)
-    private final static By signButtonYesCheckout = By.xpath(".//button[contains(text(), 'Да')]");//кнопка Да
-    public final static String orderIsProcessedExpected = "Посмотреть статус";//ожидаемый результат по ВЕРХНЕЙ кнопке заказать
-    public final static String orderDataEntryFormExpected = "Для кого самокат";//ожидаемый результат по НИЖНЕЙ кнопке заказать
-    private final static By orderIsProcessedActual = By.xpath(".//button[@class='Button_Button__ra12g Button_Middle__1CSJM' and text()='Посмотреть статус']");//фактический результат по ВЕРХНЕЙ КНОПКЕ
-    private final static By orderDataEntryFormActual = By.className("Order_Header__BZXOb");
+    private static final By CLICK_EVERYONE_IS_USED_TO_THE_BUTTON = By.className("App_CookieButton__3cvqF");//кнопка ок с куками
+    private static final String URL_SITE_ORDER_SCOOTER = "https://qa-scooter.praktikum-services.ru/";//адрес сайта по заказу самокатов
+    public static final String SIGN_TOP_BUTTON_ORDER = ".//button[contains(@class, 'Button_Button__ra12g')]";//верхняя кнопка Заказать
+    public static final String SIGN_BOTTOM_BUTTON = ".//button[contains(@class, 'Button_Button__ra12g Button_Middle__1CSJM')]";//нижняя кнопка заказать
+    public static final String NAME_FIELD = ".//input[contains(@placeholder, 'Имя')]";//поле *Имя
+    private static final String SURNAME_FIELD = ".//input[contains(@placeholder,'* Фамилия')]";//поле *Фамилия
+    private static final String ADDRESS_FIELD = ".//input[contains(@placeholder, '* Адрес: куда привезти заказ')]";//поле *Адрес: куда привезти
+    private static final String METRO_FIELD = "select-search__input";//поле *Станция метро
+    private static final String PHONE_FIELD = ".//input[contains(@placeholder, '* Телефон: на него позвонит курьер')]";//поле *Телефон: на него позвонит курьер
+    public static final String SIGN_FURTHER_BUTTON = ".//button[contains(@class, 'Button_Button__ra12g Button_Middle__1CSJM')]";//кнопка далее
+    private static final String DATE_FIELD = ".//input[contains(@placeholder, '* Когда привезти самокат')]";//поле *Когда привезти самокат
+    public final static String SIGN_ON_DATE = ".//div[contains(@aria-label, 'Choose понедельник, 20-е ноября 2023 г.')]";// выбор даты
+    public final static String SIGN_RENTAL_PERIOD = "Dropdown-placeholder";// поле *Срок аренды
+    public final static String SIGN_CHOOSE_PERIOD = ".//div[contains(text(), 'трое суток')]";//выбор срока аренды
+    public final static String SIGN_CHOOSE_COLOR = ".//label[contains(text(), 'чёрный жемчуг')]";// поле *Цвет самоката
+    private final static String COMMENT_FIELD = ".//input[contains(@placeholder, 'Комментарий для курьера')]";// поле Комментарий для курьера
+    public final static String SIGN_BOTTOM_BUTTON_ORDER = ".//div[3]/button[2]";//кнопка заказать (после ввода всех обязательных данных)
+    public final static String SIGN_BUTTON_YES_CHECKOUT = ".//button[contains(text(), 'Да')]";//кнопка Да
+    public final static String ORDER_IS_PROCESSED_EXPECTED = "Посмотреть статус";//ожидаемый результат по ВЕРХНЕЙ кнопке заказать
+    public final static String ORDER_IS_PROCESSED_ACTUAL = ".//button[@class='Button_Button__ra12g Button_Middle__1CSJM' and text()='Посмотреть статус']";//фактический результат по ВЕРХНЕЙ КНОПКЕ
+    public final static String ORDER_DATA_ENTRY_FORM_EXPECTED = "Для кого самокат";//ожидаемый результат по НИЖНЕЙ кнопке заказать
+    public final static String ORDER_DATA_ENTRY_FORM_ACTUAL = "Order_Header__BZXOb";
 
     public OrderScooter(WebDriver driver) {
         this.driver = driver;
     }
 
-    public void setName(String userName) {
-        driver.findElement(nameField).sendKeys(userName);
+    public WebElement clickTopButton(String clickTopButtonOrder){
+        WebElement element = driver.findElement(By.xpath(clickTopButtonOrder));
+        element.click();
+        return element;
+    }
+
+    public WebElement setName(String userName) {
+        WebElement element = driver.findElement(By.xpath(NAME_FIELD));
+        element.sendKeys(userName);
+        return element;
     }//ввод имени
 
-    public void setSurname(String userSurname) {
-
-        driver.findElement(surnameField).sendKeys(userSurname);
+    public WebElement setSurname(String userSurname) {
+        WebElement element = driver.findElement(By.xpath(SURNAME_FIELD));
+        element.sendKeys(userSurname);
+        return element;
     }//ввод фамилии
 
-    public void setAddress(String userAddress) {
-
-        driver.findElement(addressField).sendKeys(userAddress);
+    public WebElement setAddress(String userAddress) {
+        WebElement element = driver.findElement(By.xpath(ADDRESS_FIELD));
+        element.sendKeys(userAddress);
+        return element;
     }//ввод адреса
 
     public void setMetro(String userMetro) {
-        driver.findElement(metroField).sendKeys(userMetro);
+        driver.findElement(By.className(METRO_FIELD)).sendKeys(userMetro);
         String metroOptionTemplate = ".//div[@class='select-search__select']//*[text()='%s']";
         List<WebElement> metroLists = driver.findElements(By.xpath(String.format(metroOptionTemplate, userMetro)));
         metroLists.get(0).click();
     }//ввод метро
 
-    public void setPhone(String userPhone) {
-        driver.findElement(phoneField).sendKeys(userPhone);
+    public WebElement setPhone(String userPhone) {
+        WebElement element = driver.findElement(By.xpath(PHONE_FIELD));
+        element.sendKeys(userPhone);
+        return element;
     }//ввод номера телефона
 
-    public void clickFurtherButton() {
-        driver.findElement(signFurtherButton).click();
+    public WebElement clickFurtherButton(String clickFurtherButtonOrder) {
+        WebElement element = driver.findElement(By.xpath(clickFurtherButtonOrder));
+        element.click();
+        return element;
     }//клик на кнопку далее
 
-    public void setDate(String userDate) {
-        driver.findElement(dateField).sendKeys(userDate);
+    public WebElement setDate(String userDate) {
+        WebElement element = driver.findElement(By.xpath(DATE_FIELD));
+        element.sendKeys(userDate);
+        return element;
     }//ввод даты
 
-    public void clickOnDate() {
-        driver.findElement(signOnDate).click();
+    public WebElement clickOnDate(String clickOnDateOrder) {
+        WebElement element = driver.findElement(By.xpath(clickOnDateOrder));
+        element.click();
+        return element;
     }//выбор даты из календаря
 
-    public void clickRentalPeriod() {
-        driver.findElement(signRentalPeriod).click();
+    public WebElement clickRentalPeriod(String clickRentalPeriodOrder) {
+        WebElement element = driver.findElement(By.className(clickRentalPeriodOrder));
+        element.click();
+        return element;
     }//клик на поле срока аренды
 
-    public void clickChoosePeriod() {
-        driver.findElement(signChoosePeriod).click();
+    public WebElement clickChoosePeriod(String clickChoosePeriodOrder) {
+        WebElement element = driver.findElement(By.xpath(clickChoosePeriodOrder));
+        element.click();
+        return element;
     }//выбор срока аренды
 
-    public void clickChooseColor() {
-        driver.findElement(signChooseColor).click();
+    public WebElement clickChooseColor(String clickChooseColorOrder) {
+        WebElement element = driver.findElement(By.xpath(clickChooseColorOrder));
+        element.click();
+        return element;
     }//выбор цвета
 
-    public void setComment(String userComment) {
-        driver.findElement(commentField).sendKeys(userComment);
+    public WebElement setComment(String userComment) {
+        WebElement element = driver.findElement(By.xpath(COMMENT_FIELD));
+        element.sendKeys(userComment);
+        return element;
     }//ввод комментария
 
-    public void clickBottomButtonOrder() {
-        driver.findElement(signBottomButtonOrder).click();
+    public WebElement clickBottomButtonOrder(String clickBottomButton) {
+        WebElement element = driver.findElement(By.xpath(clickBottomButton));
+        element.click();
+        return element;
     }//клик на заказать после заполнения всех обязательных полей
 
-    public void clickButtonYesCheckout() {
-        driver.findElement(signButtonYesCheckout).click();
+    public WebElement clickButtonYesCheckout(String clickButtonYesCheckoutOrder) {
+        WebElement element = driver.findElement(By.xpath(clickButtonYesCheckoutOrder));
+        element.click();
+        return element;
     }//клик на да (уверен, что хочу заказать)
 
-    public void orderIsProcessed(String orderIsProcessedExpected) {
-
-        String compareExpectedAndActualResultOrder = driver.findElement(orderIsProcessedActual).getText();
-        assertThat(orderIsProcessedExpected, is(compareExpectedAndActualResultOrder));
-    }//сравнение ожидаемого и фактического результатов для ВЕРХНЕЙ кнопке
-
-    public void orderDataEntryForm (String orderDataEntryFormExpected){
-        String compareExpectedAndActualResultOrderBottomButton = driver.findElement(orderDataEntryFormActual).getText();
-        assertThat(orderDataEntryFormExpected, is(compareExpectedAndActualResultOrderBottomButton));
+    public static String orderDataEntryForm(String orderDataEntryFormActual){
+        String ActualResultOrderBottomButton = driver.findElement(By.xpath(orderDataEntryFormActual)).getText();
+        return ActualResultOrderBottomButton;
     }
+    public static String orderDataEntryFormBottomButton(String orderDataEntryFormActualBottomButton){
+        String ActualResultOrderBottomButton = driver.findElement(By.className(orderDataEntryFormActualBottomButton)).getText();
+        return ActualResultOrderBottomButton;
+    }
+
 
     public void startTest(){
         driver.manage().window().maximize();
-        driver.get(Url_Site_Order_Scooter);
-        WebElement everyoneIsUsedToTheButton = driver.findElement(Click_Everyone_Is_Used_To_The_Button);
+        driver.get(URL_SITE_ORDER_SCOOTER);
+        WebElement everyoneIsUsedToTheButton = driver.findElement(CLICK_EVERYONE_IS_USED_TO_THE_BUTTON);
         everyoneIsUsedToTheButton.click();
     }
 
     public void quitBrows(){
         driver.quit();
     }
-
-
-
-
 }
